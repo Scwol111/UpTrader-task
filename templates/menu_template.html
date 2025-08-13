@@ -1,0 +1,24 @@
+<li> 
+    <button type="button"> 
+        <a href='{{item.ref_name}}/'> 
+            {% if item.is_active %}
+            <b>
+            {% endif %}
+
+            {{item.name}}
+
+            {% if item.is_active %}
+            </b>
+            {% endif %}
+        </a> 
+    </button>
+    {% if item.has_childs %}
+        <ul>
+         {% for ch in item.childs %}
+              {% with item=ch template_name="menu_template.html" %}
+                   {% include template_name %}
+              {% endwith %}
+         {% endfor %}
+         </ul>
+    {% endif %}
+</li>
